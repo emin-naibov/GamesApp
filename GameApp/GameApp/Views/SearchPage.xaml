@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="GameApp.Views.SearchPage"
+            Title="Games">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="New" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Editor Grid.Column="0" Placeholder="Enter the name of game:"></Editor>
+                <Button Grid.Column="1" Text="Search"></Button>
+            </Grid>
+            <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding Mygame}" Grid.Row="1">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Image Source="{Binding background_image}"/>
+                            <Label Text="{Binding name}"/>
+                            <Label Text="{Binding released}"/>
+                            <FlexLayout Direction="Column">
+                                <Button Text="Details"/>
+                                <Button Text="Like"/>
+                            </FlexLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage>
+  <ContentPage Title="Top" />
+  <ContentPage Title="All" />
+</TabbedPage>
