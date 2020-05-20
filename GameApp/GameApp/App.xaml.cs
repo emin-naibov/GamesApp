@@ -1,4 +1,5 @@
 ﻿using GameApp.Services;
+using GameApp.ViewModels;
 using System;
 using System.Globalization;
 using Xamarin.Forms;
@@ -12,6 +13,8 @@ namespace GameApp
         {
             InitializeComponent();
             DependencyService.Register<IGamesApiClient, GamesApiClient>();
+            DependencyService.Register<IGamesStorage, GamesStorage>();
+           // DependencyService.Register<LikedGamesViewModel>();
             MainPage = new MainPage();
         }
 

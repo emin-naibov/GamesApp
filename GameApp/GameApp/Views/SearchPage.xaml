@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="GameApp.Views.SearchPage"
-            Title="Games">
+            Title="Games"
+            >
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="New" >
+    <ContentPage Title="New" x:Name="NewPage" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -21,7 +22,7 @@
                 <Editor Grid.Column="0" Placeholder="Enter the name of game:"></Editor>
                 <Button Grid.Column="1" Text="Search"></Button>
             </Grid>
-            <CollectionView VerticalOptions="FillAndExpand" ItemsSource="{Binding Mygame}" Grid.Row="1">
+            <CollectionView x:Name="Games_collection" VerticalOptions="FillAndExpand" ItemsSource="{Binding Mygame}" SelectedItem="{Binding SelectedGame}" Grid.Row="1">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
@@ -29,8 +30,8 @@
                             <Label Text="{Binding name}"/>
                             <Label Text="{Binding released}"/>
                             <FlexLayout Direction="Column">
+                                <Button Text="Like" Command="{Binding BindingContext.Add_to_liked_command, Source={x:Reference NewPage}}" CommandParameter="{Binding .}"/>
                                 <Button Text="Details"/>
-                                <Button Text="Like"/>
                             </FlexLayout>
                         </StackLayout>
                     </DataTemplate>
