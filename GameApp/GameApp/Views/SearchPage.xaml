@@ -22,7 +22,7 @@
                 <Editor Grid.Column="0" Placeholder="Enter the name of game:"></Editor>
                 <Button Grid.Column="1" Text="Search"></Button>
             </Grid>
-            <CollectionView x:Name="Games_collection" VerticalOptions="FillAndExpand" ItemsSource="{Binding Mygame}" SelectedItem="{Binding SelectedGame}" Grid.Row="1">
+            <CollectionView x:Name="Games_collection" VerticalOptions="FillAndExpand" ItemsSource="{Binding Mygame}" SelectedItem="{Binding SelectedGame}" SelectionMode="Single" Grid.Row="1">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>

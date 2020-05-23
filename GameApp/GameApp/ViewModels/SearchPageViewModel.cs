@@ -14,7 +14,7 @@ namespace GameApp.ViewModels
     {
 		IGamesApiClient gamesApiClient;
 		IGamesStorage gamesStorage;
-		public Command Add_to_liked_command { get; set; }
+		public Command<Result> Add_to_liked_command { get; set; }
 		private ObservableCollection<Result> _mygame;
 
 		public ObservableCollection<Result> Mygame
@@ -41,13 +41,13 @@ namespace GameApp.ViewModels
 			gamesStorage = DependencyService.Get<IGamesStorage>();
 			Mygame = new ObservableCollection<Result>();
 			Load();
-			Add_to_liked_command = new Command(Add_to_Liked);
+			Add_to_liked_command = new Command<Result>(Add_to_Liked);
 		}
-		public async void Add_to_Liked()
+		public async void Add_to_Liked(Result result)
 		{
 			//await App.Current.MainPage.DisplayAlert("ok","yes","cancel");
-			//gamesStorage.AddGame(SelectedGame);
-			MessagingCenter.Send(this, "game_details", SelectedGame);
+			gamesStorage.AddGame(result);
+			//MessagingCenter.Send(this, "game_details", SelectedGame);
 		}
 		private async void Load()
 		{

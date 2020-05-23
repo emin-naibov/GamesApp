@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -139,7 +140,8 @@ namespace GameApp.Models
     public class Genre
     {
         public int id { get; set; }
-        public string name { get; set; }
+        [JsonProperty("name")]
+        public string Genrename { get; set; }
         public string slug { get; set; }
     }
 

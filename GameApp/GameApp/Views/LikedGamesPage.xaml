@@ -9,16 +9,16 @@
         <CollectionView ItemsSource="{Binding MyLikedGames}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Padding="0,10,0,10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="{Binding background_image}"/>
+                        <Image Grid.Column="0" HeightRequest="50" Source="{Binding background_image}"/>
                         <StackLayout Grid.Column="1">
                             <Label Text="{Binding name}"/>
                             <Label Text="{Binding released}"/>
-                            <Label Text="{Binding rating}"/>
+                            <Label Text="{Binding genres[0].Genrename}"/>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>
