@@ -31,7 +31,7 @@
                             <Label Text="{Binding released}"/>
                             <FlexLayout Direction="Column">
                                 <Button Text="Like" Command="{Binding BindingContext.Add_to_liked_command, Source={x:Reference NewPage}}" CommandParameter="{Binding .}"/>
-                                <Button Text="Details"/>
+                                <Button Text="Details" Command="{Binding BindingContext.Getinfo_command, Source={x:Reference NewPage}}" CommandParameter="{Binding .}"/>
                             </FlexLayout>
                         </StackLayout>
                     </DataTemplate>

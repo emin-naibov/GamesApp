@@ -1,5 +1,6 @@
 ﻿using GameApp.Models;
 using GameApp.Services;
+using GameApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,7 @@ namespace GameApp.ViewModels
 		IGamesApiClient gamesApiClient;
 		IGamesStorage gamesStorage;
 		public Command<Result> Add_to_liked_command { get; set; }
+		public Command<Result> Getinfo_command { get; set; }
 		private ObservableCollection<Result> _mygame;
 
 		public ObservableCollection<Result> Mygame
@@ -42,12 +44,21 @@ namespace GameApp.ViewModels
 			Mygame = new ObservableCollection<Result>();
 			Load();
 			Add_to_liked_command = new Command<Result>(Add_to_Liked);
+			Getinfo_command = new Command<Result>(GameDetails);
 		}
 		public async void Add_to_Liked(Result result)
 		{
 			//await App.Current.MainPage.DisplayAlert("ok","yes","cancel");
 			gamesStorage.AddGame(result);
 			//MessagingCenter.Send(this, "game_details", SelectedGame);
+		}
+		private async void GameDetails(Result result)
+		{
+			var detailPage = (Application.Current.MainPage as MasterDetailPage).Detail;
+			await detailPage.Navigation.PushAsync(new Game_Detail_Page());
+			//await Navigation.PushAsync(new GameDetails());
+
+			MessagingCenter.Send(this, "game_details", result);
 		}
 		private async void Load()
 		{

@@ -10,5 +10,6 @@ namespace GameApp.Services
     internal interface IGamesApiClient
     {
         Task<ObservableCollection<Result>>GetGames();
+        Task<Rootobject> getInfo(int id);
     }
 }
