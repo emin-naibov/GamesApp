@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace GameApp.Services
 {
     public class GamesStorage: IGamesStorage
     {
-        private ObservableCollection<Result> TempGames = new ObservableCollection<Result>();
+        private List<Result> TempGames = new List<Result>();
 
         public GamesStorage()
         {
@@ -19,8 +20,9 @@ namespace GameApp.Services
         {
             TempGames.Add(result);
         }
-        public ObservableCollection<Result> GetAllGames()
+        public List<Result> GetAllGames()
         {
+            TempGames = TempGames.Distinct().ToList();
             return TempGames;
         }
 

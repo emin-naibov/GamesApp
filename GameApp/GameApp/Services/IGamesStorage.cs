@@ -9,6 +9,6 @@ namespace GameApp.Services
     public interface IGamesStorage
     {
         void AddGame(Result result);
-        ObservableCollection<Result> GetAllGames();
+       List<Result> GetAllGames();
     }
 }

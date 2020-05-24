@@ -46,7 +46,7 @@ namespace GameApp.ViewModels
 			Add_to_liked_command = new Command<Result>(Add_to_Liked);
 			Getinfo_command = new Command<Result>(GameDetails);
 		}
-		public async void Add_to_Liked(Result result)
+		public  void Add_to_Liked(Result result)
 		{
 			//await App.Current.MainPage.DisplayAlert("ok","yes","cancel");
 			gamesStorage.AddGame(result);

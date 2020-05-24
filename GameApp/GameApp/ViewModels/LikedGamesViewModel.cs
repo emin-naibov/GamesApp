@@ -23,7 +23,7 @@ namespace GameApp.ViewModels
             gamesStorage = DependencyService.Get<IGamesStorage>();
             if (gamesStorage != null)
             {
-                MyLikedGames = new ObservableCollection<Result>(gamesStorage.GetAllGames());
+                MyLikedGames = new ObservableCollection<Result>(new List<Result>(gamesStorage.GetAllGames()));
                 test();
             }
             //MessagingCenter.Subscribe<SearchPageViewModel, Result>(this, "game_details", async (sender, message) =>

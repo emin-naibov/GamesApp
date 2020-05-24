@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -53,7 +54,8 @@ namespace GameApp.Models
         public string dominant_color { get; set; }
         public Parent_Platforms[] parent_platforms { get; set; }
         public Platform2[] platforms { get; set; }
-        public Store[] stores { get; set; }
+        [JsonProperty("stores")]
+        public Storesss[] stor { get; set; }
         public Developer[] developers { get; set; }
         public Genre[] genres { get; set; }
         public Tag[] tags { get; set; }
@@ -175,7 +177,7 @@ namespace GameApp.Models
         public string recommended { get; set; }
     }
 
-    public class Stores
+    public class Storesss
     {
         public int id { get; set; }
         public string url { get; set; }
