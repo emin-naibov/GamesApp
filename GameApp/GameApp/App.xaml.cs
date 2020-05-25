@@ -15,6 +15,8 @@ namespace GameApp
             DependencyService.Register<IGamesApiClient, GamesApiClient>();
             DependencyService.Register<IGamesStorage, GamesStorage>();
             DependencyService.Register<GameDetailsViewModel>();
+            DependencyService.Register<LikedGamesViewModel>();
+            DependencyService.Register<SearchPageViewModel>();
             MainPage = new MainPage();
         }
 

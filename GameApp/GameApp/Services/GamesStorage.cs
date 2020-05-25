@@ -7,22 +7,31 @@ using System.Text;
 
 namespace GameApp.Services
 {
-    public class GamesStorage: IGamesStorage
+    public class GamesStorage : IGamesStorage
     {
-        private List<Result> TempGames = new List<Result>();
+        private ObservableCollection<Result> TempGames = new ObservableCollection<Result>();
+        private bool canAdd;
 
         public GamesStorage()
         {
-           // MyTempGames = new ObservableCollection<Result>();
+            // MyTempGames = new ObservableCollection<Result>();
         }
 
         public void AddGame(Result result)
         {
-            TempGames.Add(result);
+            
+            if (result.is_liked)
+            {
+                App.Current.MainPage.DisplayAlert("ok", "yes", "cancel");
+            }
+            else
+            {
+                TempGames.Add(result);
+                result.is_liked = true;
+            }
         }
-        public List<Result> GetAllGames()
+        public ObservableCollection<Result> GetAllGames()
         {
-            TempGames = TempGames.Distinct().ToList();
             return TempGames;
         }
 

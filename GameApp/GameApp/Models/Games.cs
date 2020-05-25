@@ -50,6 +50,7 @@ namespace GameApp.Models
         public Parent_Platforms[] parent_platforms { get; set; }
         public Genre[] genres { get; set; }
         public int community_rating { get; set; }
+        public bool is_liked { get; set; }
     }
 
     public class Added_By_Status
