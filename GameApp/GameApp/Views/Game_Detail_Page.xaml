@@ -13,8 +13,8 @@
             <Label Text="{Binding MyGame.name,StringFormat='Name:{0}'}" TextColor="Blue"/>
             <Label Text="{Binding MyGame.released,StringFormat='Date:{0}'}"  TextColor="Blue"/>
             <FlexLayout Direction="Row">
-                <Button Text="Like" Command="{Binding BindingContext.Add_to_liked_command, Source={x:Reference GameDetailsPage}}" BackgroundColor="Wheat"/>
-                <Button Text="Share" Command="{Binding BindingContext.Share_command, Source={x:Reference GameDetailsPage}}" BackgroundColor="LightGreen"/>
+                <Button WidthRequest="200" Text="Like" Command="{Binding BindingContext.Add_to_liked_command, Source={x:Reference GameDetailsPage}}" BackgroundColor="Wheat"/>
+                <Button WidthRequest="200" Text="Share" Command="{Binding BindingContext.Share_command, Source={x:Reference GameDetailsPage}}" BackgroundColor="LightGreen"/>
             </FlexLayout>
             <ScrollView>
              <Label Text="{Binding MyGame.description_raw,StringFormat='Description:{0}'}" BackgroundColor="LightPink"/>

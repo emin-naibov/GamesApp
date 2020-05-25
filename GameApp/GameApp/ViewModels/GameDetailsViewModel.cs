@@ -43,6 +43,13 @@ namespace GameApp.ViewModels
                 Message = message;
             Get();
             });
+            MessagingCenter.Subscribe<LikedGamesViewModel, Result>(this, "game_details", (sender, message) =>
+            {
+                SearchID = message.id;
+                Message = message;
+                Get();
+            });
+
             Share_command = new Command(ShareGame);
             Buy_command = new Command(Buy);
 

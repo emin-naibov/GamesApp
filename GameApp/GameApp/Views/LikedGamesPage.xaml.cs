@@ -1,4 +1,5 @@
-﻿using GameApp.ViewModels;
+﻿using GameApp.Models;
+using GameApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

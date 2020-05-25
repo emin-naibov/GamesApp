@@ -7,9 +7,8 @@
              x:Class="GameApp.Views.Settings">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Button Text="Change Language"/>
+            <Button Text="Clear cache"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

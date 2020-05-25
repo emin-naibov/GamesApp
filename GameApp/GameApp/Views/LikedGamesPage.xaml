@@ -4,22 +4,25 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="GameApp.Views.LikedGamesPage">
+             x:Class="GameApp.Views.LikedGamesPage"
+             x:Name="LikedPage">
     <ContentPage.Content>
-        <CollectionView ItemsSource="{Binding MyLikedGames}" >
+        <CollectionView  ItemsSource="{Binding MyLikedGames}" >
             <CollectionView.ItemTemplate >
                 <DataTemplate >
                     <Grid Padding="0,10,0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
+                            <ColumnDefinition Width="40"/>
                         </Grid.ColumnDefinitions>
-                        <Image   Grid.Column="0" HeightRequest="50" Source="{Binding background_image}"/>
+                        <Image Grid.Column="0" HeightRequest="50" Source="{Binding background_image}"/>
                         <StackLayout Grid.Column="1" >
                             <Label Text="{Binding name}"/>
                             <Label Text="{Binding released}"/>
                             <Label Text="{Binding genres[0].Genrename}"/>
                         </StackLayout>
+                        <Button  Grid.Column="2" Text="Info" Command="{Binding BindingContext.Getinfo_command, Source={x:Reference LikedPage}}" CommandParameter="{Binding .}"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
