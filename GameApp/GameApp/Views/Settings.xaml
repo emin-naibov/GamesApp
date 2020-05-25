@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Button Text="Change Language"/>
-            <Button Text="Clear cache"/>
+            <Button Text="Clear cache" Command="{Binding Clearcache_command}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

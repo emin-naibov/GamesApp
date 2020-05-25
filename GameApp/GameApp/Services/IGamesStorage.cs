@@ -10,5 +10,6 @@ namespace GameApp.Services
     {
         void AddGame(Result result);
         ObservableCollection<Result> GetAllGames();
+        void ClearCache();
     }
 }

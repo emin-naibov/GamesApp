@@ -70,8 +70,8 @@ namespace GameApp.ViewModels
         {
             Share.RequestAsync(new ShareTextRequest
             {
-                Text = MyGame.description,
-                Title = $"{MyGame.name}:"
+                Text = MyGame.name,
+                Title = "Name of game"
             }); ;
         }
         

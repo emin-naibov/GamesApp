@@ -1,38 +1,66 @@
 ﻿using GameApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
+using Xamarin.Essentials;
 
 namespace GameApp.Services
 {
-    public class GamesStorage : IGamesStorage
+    public class GamesStorage: IGamesStorage
     {
         private ObservableCollection<Result> TempGames = new ObservableCollection<Result>();
+        private ObservableCollection<Result> TempGames_second = new ObservableCollection<Result>();
         private bool canAdd;
+        private const string GamesFile="games.json";
+        string filename = Path.Combine(FileSystem.CacheDirectory, GamesFile);
 
         public GamesStorage()
         {
-            // MyTempGames = new ObservableCollection<Result>();
+           // MyTempGames = new ObservableCollection<Result>();
         }
 
         public void AddGame(Result result)
         {
-            
-            if (result.is_liked)
+            canAdd = true;
+            foreach (var item in TempGames)
             {
-                App.Current.MainPage.DisplayAlert("ok", "yes", "cancel");
+                if (item.id == result.id)
+                {
+                    canAdd = false;
+                    App.Current.MainPage.DisplayAlert("ok", "yes", "cancel");
+                }
             }
-            else
+            if (canAdd)
             {
                 TempGames.Add(result);
-                result.is_liked = true;
+                var jsonToWrite = JsonConvert.SerializeObject(TempGames);
+                File.WriteAllText(filename, jsonToWrite);
             }
         }
         public ObservableCollection<Result> GetAllGames()
         {
-            return TempGames;
+            if (File.Exists(filename))
+            {
+                var json = File.ReadAllText(filename);
+                
+                TempGames = JsonConvert.DeserializeObject<ObservableCollection<Result>>(json);
+                return TempGames;
+            }
+            else
+                return TempGames_second;
+        }
+        public void ClearCache()
+        {
+            if (File.Exists(filename))
+            {
+                var jsonToWrite = JsonConvert.SerializeObject(TempGames_second);
+                File.WriteAllText(filename, jsonToWrite);
+            }
+            else App.Current.MainPage.DisplayAlert("ok", "yes", "cancel");
         }
 
     }

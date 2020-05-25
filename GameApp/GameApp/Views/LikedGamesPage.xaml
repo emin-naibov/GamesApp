@@ -7,7 +7,7 @@
              x:Class="GameApp.Views.LikedGamesPage"
              x:Name="LikedPage">
     <ContentPage.Content>
-        <CollectionView  ItemsSource="{Binding MyLikedGames}" >
+        <CollectionView  SelectionChanged="CollectionView_SelectionChanged" ItemsSource="{Binding MyLikedGames}" >
             <CollectionView.ItemTemplate >
                 <DataTemplate >
                     <Grid Padding="0,10,0,10">
